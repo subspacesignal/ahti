@@ -37,7 +37,7 @@ function getSubreddit(browserResponse) {
         var hrefs = [];
         imgurResponse.data.forEach(function (image) {
           if (image.link.includes(".jpg") || image.link.includes(".gif") || image.link.includes(".png") || image.link.includes(".jpeg")) {
-            hrefs.push({href: image.link});
+            hrefs.push({href: addThumbnailCharacter(image)});
           }
         });
 
@@ -51,6 +51,11 @@ function getSubreddit(browserResponse) {
   }).on('error', (e) => {
     console.log(`Got error: ${e.message}`);
   });
+}
+
+function addThumbnailCharacter(image) {
+  let fileExtension = image.link.split('.').pop();
+  return image.link.replace('.' + fileExtension, 't.' + fileExtension);
 }
 
 module.exports = router;
