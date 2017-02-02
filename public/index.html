@@ -6,7 +6,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
 </head>
 <body ng-controller="mainController">
-<script src="/app.js"></script>
-{{ hrefs }}
+  <script src="/app.js"></script>
+
+  <div>
+    <ol>
+      <!--TODO: href.href should be image.href or thumbnail.href?-->
+      <li ng-repeat="href in hrefs"><img src="{{ href.href }}"></li>
+    </ol>
+  </div>
+
 </body>
 </html>
